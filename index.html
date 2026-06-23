@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Mux Player</title></head>
+<body>
+<h2>Loading Mux Player...</h2>
+<div id="out"></div>
+<script>
+(async () => {
+  try {
+    const s = await fetch('https://api.mux.com/ui/v1/session', {credentials:'include'});
+    const session = await s.json();
+    document.getElementById('out').innerHTML = '<pre style="color:green">' + JSON.stringify(session, null, 2) + '</pre>';
+  } catch(e) {
+    document.getElementById('out').innerText = 'Error: ' + e;
+  }
+})();
+</script>
+</body>
+</html>
